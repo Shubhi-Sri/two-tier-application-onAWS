@@ -12,8 +12,21 @@ services:
       PG_DATA: /data/postgres
     volumes:
       - tododb:/data/postgres
+  express:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+       DB_USER: admin
+       DB_PASSWORD: password
+       DB_HOST: db
+       DB_NAME: tododb
+    depends_on:
+      - db
 
 
 volumes:
   tododb:
   ecomm-pgadmin:
+
+
